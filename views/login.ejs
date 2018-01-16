@@ -1,0 +1,39 @@
+﻿<%- include('partials/header') %>
+        <div id="head">
+           <div class="line">
+              <h1>Login</h1>
+           </div>
+        </div>
+        <div id="content" class="left-align contact-page">
+           <div class="line ">
+              <div class="margin">
+     <div class="s-12 l-12">
+       <div class="form-container" >
+           <% if(locals.error) { %>
+               <div class="alert alert-danger"><%= error %></div>
+           <% } %>
+           <% if(locals.success) { %>
+               <div class="alert alert-success"><%= success %></div>
+           <% } %>
+           <form method="post">
+               <div class="form-group">
+                   <label for="username">Username</label>
+                   <input type="text" name="username" id="username" value="<%= locals.username || '' %>" class="form-control" />
+               </div>
+               <div class="form-group">
+                   <label for="password">Password</label>
+                   <input type="password" name="password" id="password" class="form-control" />
+               </div>
+               <div class="form-group">
+                   <button type="submit" class="button">Login</button>
+                   <a href="/register" class="button">Register</a>
+               </div>
+           </form>
+       </div>
+                 </div>
+
+              </div>
+           </div>
+        </div>
+     <%- include('partials/footer') %>
+
