@@ -1,0 +1,33 @@
+.img_wrap {
+  position: relative;
+}
+.img_description_layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(36, 62, 206, 0.6);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+.img_wrap:hover .img_description_layer {
+  visibility: visible;
+  opacity: 1;
+}
+.img_description {
+  transition: .2s;
+  transform: translateY(1em);
+}
+.img_wrap:hover .img_description {
+  transform: translateY(0);
+}
+.img_img{
+  margin-bottom: 5%;
+}

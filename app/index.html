@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+      <meta charset="utf-8" />
+      <title>Heart Monitor</title>
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="app-content/app.css">
+      <link rel="stylesheet" href="app-content/css/components.css">
+      <link rel="stylesheet" href="app-content/css/icons.css">
+      <link rel="stylesheet" href="app-content/css/responsee.css">
+      <link rel="stylesheet" href="app-content/css/owl.carousel.css">
+      <link rel="stylesheet" href="app-content/css/owl.theme.css">
+      <!-- CUSTOM STYLE -->
+      <link rel="stylesheet" href="app-content/template-style.css">
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+</head>
+<body class="">
+    <!-- header -->
+    <header>
+ <div class="flash-message" ng-if="flash">
+            <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+        </div>
+
+
+        <nav>
+         <div class="line">
+            <div class="top-nav">
+               <div class="logo hide-l">
+                  <a href="index.html">HEART<br/><strong>MONITOR</strong></a>
+               </div>
+               <p class="nav-text">Custom menu text</p>
+               <div class="top-nav s-12 l-5">
+                  <ul class="right top-ul chevron">
+                     <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home" style="font-size: 20px;">Home</a></li>
+                     <li ng-class="{active: activeTab === 'risks'}"><a ui-sref="risks" style="font-size: 20px;">Risks</a></li>
+                     <li ng-class="{active: activeTab === 'diseases'}"><a ui-sref="diseases" style="font-size: 20px;">Diseases</a></li>
+                     </li>
+                  </ul>
+               </div>
+               <ul class="s-12 l-2">
+                  <li class="logo hide-s hide-m">
+                     <a ui-sref="home" style="font-size: 30px;">HEART<br /><strong>MONITOR</strong></a>
+                  </li>
+               </ul>
+               <div class="top-nav s-12 l-5">
+                  <ul class="top-ul chevron">
+                     <li ng-class="{active: activeTab === 'diets'}"><a ui-sref="diets" style="font-size: 20px;">Food</a></li>
+                     <li><a href="/register">Signup</a></li>
+                     <li><a href="/login" target="_self">Login</a></li>
+                     <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account" style="font-size: 20px;">Profile</a></li>
+                     <li><a href="/login" target="_self" style="font-size: 20px;">Logout</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </nav>
+    </header>
+
+    <!-- main -->
+    <main ui-view></main>
+
+    <!-- footer -->
+    <footer>
+      <div class="line">
+        <div class="s-12 l-6">
+          <p style="font-size: 15px; margin-left: 2%;">Copyright 2017, Vision Design - graphic zoo
+          </p>
+        </div>
+        <div class="s-12 l-6">
+         <p class="right">
+          <a style="font-size: 15px; margin-right: 2%;" class="footer_pararaph" href="http://www.myresponsee.com" title="Responsee - lightweight responsive framework">Design and coding by Responsee Team</a>
+         </p>
+       </div>
+    </div>
+    </footer>
+
+    <!-- external scripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="app-content/js/responsee.js"></script>
+    <script type="text/javascript" src="app-content/js/owl.carousel.js"></script>
+
+    <!-- application scripts -->
+    <script src="app.js"></script>
+    <script src="app-services/user.service.js"></script>
+    <script src="app-services/flash.service.js"></script>
+    <script src="app-services/data.service.js"></script>
+    <script src="home/index.controller.js"></script>
+    <script src="account/index.controller.js"></script>
+    <script src="risks/index.controller.js"></script>
+    <script src="diets/index.controller.js"></script>
+    <script src="diseases/index.controller.js"></script>
+</body>
+
+</html>
