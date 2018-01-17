@@ -1,5 +1,5 @@
-﻿{
-    "connectionString": "mongodb://localhost:27017/heart_monitor",
-    "apiUrl": "http://localhost:3000/api",
+{
+    "connectionString": "mongodb://root:root@ds257077.mlab.com:57077/heartmonitor",
+    "apiUrl": "http://174.138.55.123/api",
     "secret": "SECRET STRING"
 }

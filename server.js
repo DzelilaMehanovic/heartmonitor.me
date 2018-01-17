@@ -24,5 +24,6 @@ app.get('/', function (req, res) {
       return res.redirect('/app');
 });
 
-var server = app.listen(3000, function () {
+var server = app.listen(80, function () {
+	console.log('Server is running');
 });
