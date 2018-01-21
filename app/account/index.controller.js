@@ -31,7 +31,7 @@
             UserService.GetPressure(vm.user).then(function (pressure) {
                 vm.pressure = pressure;
                  angular.forEach(vm.pressure, function(value, key){
-                    vm.sum = vm.sum + value.value;
+                    vm.sum = vm.sum + parseInt(value.value);
                 });
                 vm.count = Object.keys(vm.pressure).length;
                 vm.average = vm.sum / vm.count;
@@ -43,11 +43,9 @@
         }
 
 
-        function savePressure(){
-            if(!angular.isNumber(vm.pressure.value)){
-            }
+        function savePressure(){            
             vm.pressure = {
-                value: parseInt(vm.pressure.value),
+                value: vm.pressure.value,
                 user_id: vm.user._id
             }
           UserService.SavePressure(vm.pressure)
@@ -55,8 +53,8 @@
                 initController();
                   FlashService.Success('Value saved');
                 })
-              .catch(function (error) {
-                  FlashService.Error(error);
+              .catch(function () {
+                  FlashService.Error('Only numerical values are acceptable');
               });
         }
 
@@ -65,8 +63,8 @@
                 .then(function () {
                     FlashService.Success('User updated');
                 })
-                .catch(function (error) {
-                    FlashService.Error(error);
+                .catch(function () {
+                    FlashService.Error('Username already exists');
                 });
                 console.log(vm.user);
         }
@@ -74,7 +72,6 @@
         function deleteUser() {
             UserService.Delete(vm.user._id)
                 .then(function () {
-                    alert('hi');
                     $window.location = '/login';
                 })
                 .catch(function (error) {

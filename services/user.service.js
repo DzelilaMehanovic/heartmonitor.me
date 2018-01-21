@@ -4,9 +4,9 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
-var MONGOLAB_URI = config.connectionString;
-var db = mongo.db(process.env.MONGOLAB_URI, { native_parser: true });
+var db = mongo.db(config.connectionString, { native_parser: true });
 db.bind('users');
+db.bind('diets');
 db.bind('pressure');
 
 var service = {};
@@ -161,13 +161,19 @@ function _delete(_id) {
 
 function savePressure(userParam){
       var deferred = Q.defer();
+
+        if(isNaN(userParam.value)){
+             deferred.reject('error');    
+        }
+        else{
           var pressure = userParam;
           db.pressure.insert(
               pressure,
               function (err, doc) {
                   if (err) deferred.reject(err.name + ': ' + err.message);
-
                   deferred.resolve();
               });
+      
       return deferred.promise;
+    }
 }

@@ -5,7 +5,7 @@ var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
 var MONGOLAB_URI = config.connectionString;
-var db = mongo.db(process.env.MONGOLAB_URI, { native_parser: true });
+var db = mongo.db(MONGOLAB_URI, { native_parser: true });
 db.bind('diets');
 db.bind('diseases');
 
