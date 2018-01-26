@@ -48,7 +48,7 @@ function savePressure(req, res) {
 }
 
 function getCurrentUser(req, res) {
-    userService.getById(req.user.sub)
+    userService.getById(req.user._id)
         .then(function (user) {
             if (user) {
                 res.send(user);
@@ -62,8 +62,7 @@ function getCurrentUser(req, res) {
 }
 
 function getPressure(req, res) {
-    var userId = req.user.sub;
-    userService.getPressure(userId)
+    userService.getPressure(req.user._id)
         .then(function (pressure) {
             if (pressure) {
                 res.send(pressure);
@@ -77,8 +76,7 @@ function getPressure(req, res) {
 }
 
 function updateUser(req, res) {
-    var userId = req.user.sub;
-    userService.update(userId, req.body)
+    userService.update(req.user._id, req.body)
         .then(function () {
             res.sendStatus(200);
         })
@@ -88,8 +86,7 @@ function updateUser(req, res) {
 }
 
 function deleteUser(req, res) {
-    var userId = req.user.sub;
-    userService.delete(userId)
+    userService.delete(req.user._id)
         .then(function () {
             res.sendStatus(200);
         })

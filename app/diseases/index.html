@@ -7,13 +7,11 @@
         <div id="content">
            <div class="line">
               <div class="margin" >
-                 <div class="s-12 m-6 l-4"  ng-repeat="disease in vm.diseases" >
-                    <div class="content-block margin-bottom">
-                       <i class="icon-paperplane_ico icon2x"></i>
+                 <div class="s-12 m-12 l-12"  ng-repeat="disease in vm.diseases" >
+                    <div class="content-block margin-bottom" style="padding: 0.3rem;width: 85%; margin-left: 8%;">
                        <h3>{{disease.name}}</h3>
-                       <p>{{disease.short_introduction}}</p>
-                       <br>
-                       <!--<a href = "disease.html ">Read more</a>-->
+                       <p style="font-size: 1.8rem;">{{disease.short_introduction}}</p>
+                       <br><br>
                     </div>
                  </div>
               </div>

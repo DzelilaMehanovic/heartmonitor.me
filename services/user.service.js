@@ -1,4 +1,4 @@
-﻿var config = require('config.json');
+var config = require('config.json');
 var _ = require('lodash');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
@@ -6,7 +6,6 @@ var Q = require('q');
 var mongo = require('mongoskin');
 var db = mongo.db(config.connectionString, { native_parser: true });
 db.bind('users');
-db.bind('diets');
 db.bind('pressure');
 
 var service = {};
@@ -27,7 +26,7 @@ function authenticate(username, password) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user && bcrypt.compareSync(password, user.hash)) {
-            deferred.resolve(jwt.sign({ sub: user._id }, config.secret));
+            deferred.resolve(jwt.sign({ _id: user._id, username:user.username, name: user.firstName, surname: user.lastName}, config.secret));
         } else {
             deferred.resolve();
         }
@@ -69,15 +68,13 @@ function getPressure(user_id) {
 }
 function create(userParam) {
     var deferred = Q.defer();
-
-    // validation
     db.users.findOne(
         { username: userParam.username },
         function (err, user) {
             if (err) deferred.reject(err.name + ': ' + err.message);
 
             if (user) {
-                deferred.reject('Username "' + userParam.username + '" is already taken');
+                deferred.reject('Username "' + userParam.username + '" already exists');
             } else {
                 createUser();
             }

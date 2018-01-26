@@ -4,7 +4,7 @@
         .module('app')
         .controller('Home.IndexController', Controller);
 
-    function Controller(UserService) {
+    function Controller() {
        console.log('Home controller is running');
     }
 

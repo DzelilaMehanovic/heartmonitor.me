@@ -58,7 +58,7 @@
     $(function () {
         $.get('/app/token', function (token) {
             window.jwtToken = token;
-
+            console.log('Token: '+token);
             angular.bootstrap(document, ['app']);
         });
     });
